@@ -44,10 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
         chatbotContainer.style.display = 'none'; // Hide chat during processing
 
         try {
-            const response = await fetch('http://localhost:3000/upload', {
-                method: 'POST',
-                body: formData,
-            });
+            const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData,
+        });
+
 
             if (!response.ok) {
                 throw new Error('Server responded with an error');
@@ -133,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.scrollTop = chatMessages.scrollHeight;
 
         try {
-            const response = await fetch('http://localhost:3000/chat', {
+            const response = await fetch('/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ question }),
@@ -176,4 +177,5 @@ document.addEventListener('DOMContentLoaded', () => {
         chatMessages.appendChild(messageElement);
         chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the bottom
     };
+
 });

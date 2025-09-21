@@ -1,23 +1,21 @@
-// server.js (CommonJS style)
-require("dotenv").config();
 const express = require("express");
 const multer = require("multer");
 const fs = require("fs");
 const pdfParse = require("pdf-parse");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const Tesseract = require('tesseract.js'); // Add this line
+const Tesseract = require('tesseract.js');
 const cors = require('cors');
+const path = require('path'); 
 
 const app = express();
-app.use(express.json());
-
-// Add this line to serve static files from the 'frontend' directory
-app.use(express.static(path.join(__dirname, 'frontend')));
-
-// ... your existing routes like app.post("/upload", ...)
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from the project's root directory
+app.use(express.static(path.join(__dirname)));
+
 const upload = multer({ dest: "uploads/" });
+// ... rest of your code
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 

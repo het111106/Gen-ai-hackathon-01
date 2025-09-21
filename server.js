@@ -9,6 +9,15 @@ const Tesseract = require('tesseract.js'); // Add this line
 const cors = require('cors');
 
 const app = express();
+const path = require('path');
+// ... other imports
+const app = express();
+app.use(express.json());
+
+// Add this line to serve static files from the 'frontend' directory
+app.use(express.static(path.join(__dirname, 'frontend')));
+
+// ... your existing routes like app.post("/upload", ...)
 app.use(cors());
 app.use(express.json());
 const upload = multer({ dest: "uploads/" });

@@ -9,9 +9,6 @@ const Tesseract = require('tesseract.js'); // Add this line
 const cors = require('cors');
 
 const app = express();
-const path = require('path');
-// ... other imports
-const app = express();
 app.use(express.json());
 
 // Add this line to serve static files from the 'frontend' directory
